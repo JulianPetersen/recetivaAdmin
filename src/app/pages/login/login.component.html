@@ -1,0 +1,15 @@
+<div class="contenedor">
+    <div class="formulario">
+        <div class="titulo">
+            <!-- <img src="assets/shorti-logo.png" alt=""> -->
+            <h1>recetiva</h1>
+        </div>
+        <div class="inputs">
+            <input type="text" [(ngModel)]="usuario.email" placeholder="  Usuario">
+            <input type="password" [(ngModel)]="usuario.password" placeholder="  Contraseña">
+            <p class="mensajeError">{{errorLogin}}</p>
+            <button (click)="loggin()" >Iniciar Sesion</button>
+        </div>
+        
+    </div>
+</div>

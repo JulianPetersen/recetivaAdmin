@@ -1,0 +1,16 @@
+<div class="content" >
+    <div class="menu" [ngClass]="{'menuView':menuService.menuView == true}">
+        <div class="logo">
+            <!-- <img src="assets/shorti-logo.png" alt=""> -->
+            <h3>Recetiva</h3>
+        </div>
+        <div class="buttons">
+            <button mat-button [routerLink]="['/admin']">Inicio</button>
+            <button mat-button [routerLink]="['/recetas']" >Administrar Recetas</button>
+            <!-- <button mat-button [routerLink]="['/equipos']">Administrar equipos</button> -->
+            <!-- <button mat-button>Administrar fechas</button>
+            <button mat-button>Administrar partidos</button> -->
+            <button mat-button>Administrar Usuarios</button>
+        </div>
+    </div>
+</div>
