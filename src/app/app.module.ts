@@ -12,6 +12,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+
+import { QuillModule } from 'ngx-quill';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +31,10 @@ import { FormsModule } from '@angular/forms';
     ComponentsModule,
     HttpClientModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    QuillModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [
     provideClientHydration(),

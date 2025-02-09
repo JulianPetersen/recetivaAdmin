@@ -10,7 +10,17 @@
         flex-direction: column;
         flex-wrap: wrap;
         overflow-y: auto;
-      
+        align-items: center;
+        background-color: white;
+        .form{
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            width: 600px;
+            .file{
+                padding: 10px;
+            }
+        }
     }
 }
 
