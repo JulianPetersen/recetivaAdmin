@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatTabsModule} from '@angular/material/tabs';
 import { QuillModule } from 'ngx-quill';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -34,7 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     QuillModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   providers: [
     provideClientHydration(),

@@ -5,17 +5,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { MatButtonModule } from '@angular/material/button';
+import { AlertComponent } from './ui/alert/alert.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    MenuLateralComponent
+    MenuLateralComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
     MatIconModule,
     AppRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   exports:[
     HeaderComponent,

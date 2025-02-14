@@ -26,23 +26,25 @@ export class AdminReceetasComponent {
   }
 
 createReceta(){
-  let newReceta:Recetas = {
-    title:this.recetaTitle,
-    ingredientes:this.recetaIngredientes,
-    imgUrl:this.fileSelected.fileRaw,
-    instrucciones:this.recetaInstrucciones,
-  }
-
-  // console.log(newReceta);
-  this.recetas.createReceta(newReceta)
-    .subscribe({
-      next: ((res:Recetas) => {
-        console.log(res);
-      }),
-      error: (err => {
-        console.log(err);
+  if(this.validateData()){
+    let newReceta:Recetas = {
+      title:this.recetaTitle,
+      ingredientes:this.recetaIngredientes,
+      imgUrl:this.fileSelected.fileRaw,
+      instrucciones:this.recetaInstrucciones,
+    }
+  
+    // console.log(newReceta);
+    this.recetas.createReceta(newReceta)
+      .subscribe({
+        next: ((res:Recetas) => {
+          console.log(res);
+        }),
+        error: (err => {
+          console.log(err);
+        })
       })
-    })
+  }
 }
 
 
@@ -56,5 +58,25 @@ createReceta(){
     console.log(this.fileSelected.fileRaw)
     console.log(this.fileSelected.fileName)
     
+  }
+
+
+  validateData(){
+    if(this.recetaTitle == "" || this.recetaTitle == undefined){
+      this.global.showAlert('Error','Debes ingresar un titulo para la receta')
+      return false
+    }
+    if(this.recetaIngredientes == "" || this.recetaIngredientes == undefined){
+      this.global.showAlert('Error','Debes ingresar al menos un ingrediente')
+      return false
+    }
+    if(this.fileSelected == undefined){
+      this.global.showAlert('Error','Debes seleccionar una imagen')
+      return false
+    }
+    if(this.recetaInstrucciones == "" || this.recetaInstrucciones == undefined){
+      this.global.showAlert('Error','Debes especificar las instrucciones de tu receta.')
+    }
+    return true
   }
 }
