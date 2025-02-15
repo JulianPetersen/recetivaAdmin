@@ -1,0 +1,15 @@
+<div class="contentForm">
+    <div class="form">
+        <mat-form-field class="example-full-width">
+            <input [(ngModel)]="recetaTitle" matInput placeholder="Titulo">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input [(ngModel)]="recetaIngredientes" matInput placeholder="Ingredientes">
+        </mat-form-field>
+        <input class="file" type="file" name="" id="" (change)="uploadFile($event)">
+        <div>
+            <quill-editor [(ngModel)]="recetaInstrucciones"></quill-editor>
+        </div>
+        <button mat-flat-button (click)="createReceta()">Crear Receta</button>
+    </div>
+</div>

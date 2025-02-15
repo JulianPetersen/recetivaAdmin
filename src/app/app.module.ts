@@ -9,13 +9,20 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ComponentsModule } from './components/components.module';
 import { AdminReceetasComponent } from './pages/admin-receetas/admin-receetas.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import { QuillModule } from 'ngx-quill';
 import { MatButtonModule } from '@angular/material/button';
+import { CreateRecetaComponent } from './pages/admin-receetas/components/create-receta/create-receta.component';
+import { ListRecetasComponent } from './pages/admin-receetas/components/list-recetas/list-recetas.component';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +30,10 @@ import { MatButtonModule } from '@angular/material/button';
     HomeComponent,
     AdminComponent,
     AdminReceetasComponent,
-    LoginComponent
+    LoginComponent,
+    CreateRecetaComponent,
+    ListRecetasComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -35,11 +45,16 @@ import { MatButtonModule } from '@angular/material/button';
     QuillModule,
     MatButtonModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule,
+    MatDividerModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch()), 
   ],
   bootstrap: [AppComponent]
 })

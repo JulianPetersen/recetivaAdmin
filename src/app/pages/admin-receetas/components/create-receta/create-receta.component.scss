@@ -1,0 +1,24 @@
+
+
+    .contentForm{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .form {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            width: 600px;
+
+            .file {
+                padding: 10px;
+            }
+
+            
+            button {
+                background-color: #2E4A4D;
+                color: white;
+            }
+        }
+    }
+    

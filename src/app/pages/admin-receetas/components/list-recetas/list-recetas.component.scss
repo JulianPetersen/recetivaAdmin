@@ -1,0 +1,33 @@
+.contenedor{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .recetas{
+        width: 80%;
+        display: flex;
+        margin-top: 10px;
+        align-items: center;
+        .info{
+            width: 80%;
+            display: flex;
+            p{
+                margin-left: 20px;
+                font-family: "Montserrat", sans-serif;
+            }
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                
+            };
+        }
+        .buttons{
+            width: 20%;
+            display: flex;
+            justify-content: end;
+        }
+
+    }
+}

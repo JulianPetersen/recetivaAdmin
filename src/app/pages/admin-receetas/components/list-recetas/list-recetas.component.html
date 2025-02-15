@@ -1,0 +1,14 @@
+<div class="contenedor">
+    <!-- <mat-card appearance="outlined">
+        <mat-card-content>Simple card</mat-card-content>
+      </mat-card> -->
+    <div class="recetas" *ngFor="let receta of allRecetas">
+        <div class="info">
+            <img mat-card-image src="{{receta.img}}" alt="">
+            <p>{{receta.title}}</p>
+        </div>
+        <div class="buttons">
+            <mat-icon  aria-hidden = "false"  aria-label = "Ejemplo de icono de inicio"  fontIcon = "delete" > </mat-icon>
+        </div>
+    </div>
+</div>

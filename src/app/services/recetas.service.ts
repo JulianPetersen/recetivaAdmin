@@ -19,8 +19,16 @@ export class RecetasService {
     const fd = new FormData();
     fd.append('title', receta.title)
     fd.append('ingredientes', receta.ingredientes)
-    fd.append('img', receta.imgUrl)
+    fd.append('img', receta.img)
     fd.append('instrucciones', receta.instrucciones);
     return this.http.post<Recetas>(`${this.global.URL}/recetas`,fd,{headers:headers})
+  }
+
+
+  getAllRecetas(){
+    let headers = new HttpHeaders({
+      'x-access-token': this.token
+    })
+    return this.http.get<Recetas[]>(`${this.global.URL}/recetas`,{headers:headers})
   }
 }
