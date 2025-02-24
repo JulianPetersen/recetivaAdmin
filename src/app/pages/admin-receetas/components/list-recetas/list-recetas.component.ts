@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { GlobalService } from '../../../../services/global.service';
 import { RecetasService } from '../../../../services/recetas.service';
 import { Recetas } from '../../../../models/recetas';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../../../../components/ui/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-list-recetas',
@@ -13,7 +15,10 @@ export class ListRecetasComponent {
   allRecetas:Recetas[] = [];
 
 
-  constructor(private global:GlobalService, private receta:RecetasService){
+  constructor(private global:GlobalService, 
+              private receta:RecetasService,
+              private dialog:MatDialog,
+  ){
 
   }
 
@@ -29,7 +34,6 @@ export class ListRecetasComponent {
         next: ((res:Recetas[]) => {
           this.allRecetas = res;
           console.log(this.allRecetas)
-          console.log(this.allRecetas[0].img); 
         }),
         error: ((err) => {
           console.log(err)
@@ -38,4 +42,25 @@ export class ListRecetasComponent {
   }
 
 
+  deleteReceta(id:string){
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+       data:id,
+       width: '250px',
+     });
+     dialogRef.afterClosed().subscribe(result => {
+       console.log(`Dialog result: ${result}`);
+       if(result == true){
+         this.receta.deleteReceta(id)
+         .subscribe({
+           next: ((res)=> {
+             this.getAllRecetas();
+             console.log(res)
+           }),
+           error:((err)=>{
+             console.log(err);
+           })
+         })
+       }
+     });
+   }
 }

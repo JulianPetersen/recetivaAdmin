@@ -7,12 +7,14 @@ import { AppRoutingModule } from '../app-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { AlertComponent } from './ui/alert/alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteDialogComponent } from './ui/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     MenuLateralComponent,
-    AlertComponent
+    AlertComponent,
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   exports:[
     HeaderComponent,
-    MenuLateralComponent
+    MenuLateralComponent,
+    DeleteDialogComponent
   ]
 })
 export class ComponentsModule { }

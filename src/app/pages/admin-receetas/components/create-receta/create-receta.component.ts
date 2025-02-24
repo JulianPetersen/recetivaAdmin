@@ -24,7 +24,7 @@ constructor(private global:GlobalService, private recetas:RecetasService){}
     if(this.validateData()){
       let newReceta:Recetas = {
         title:this.recetaTitle,
-        ingredientes:this.recetaIngredientes,
+        arrayIngredientes:this.recetaIngredientes,
         img:this.fileSelected.fileRaw,
         instrucciones:this.recetaInstrucciones,
       }
@@ -34,6 +34,7 @@ constructor(private global:GlobalService, private recetas:RecetasService){}
         .subscribe({
           next: ((res:Recetas) => {
             console.log(res);
+            this.clearForm()
           }),
           error: (err => {
             console.log(err);
@@ -74,5 +75,14 @@ constructor(private global:GlobalService, private recetas:RecetasService){}
         this.global.showAlert('Error','Debes especificar las instrucciones de tu receta.')
       }
       return true
+    }
+
+
+    clearForm(){
+      this.recetaTitle = "";
+      this.recetaIngredientes = "";
+      this.recetaInstrucciones = "";
+      this.fileSelected = ""
+      
     }
 }

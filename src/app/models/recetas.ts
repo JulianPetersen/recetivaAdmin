@@ -1,7 +1,8 @@
 export interface Recetas {
     _id?:string,
     title:string,
-    ingredientes:string,
+    arrayIngredientes:string,
     img?:string,
     instrucciones:string
+    
 }
