@@ -25,13 +25,15 @@ export class LoginComponent {
       .subscribe({
         next: (res: any) => {
           localStorage.setItem('token', res.token)
+          localStorage.setItem('userId', res.userId);
+          localStorage.setItem('roles', JSON.stringify(res.roles)); // Guardar roles
           this.router.navigate(['/admin'])
+          console.log(res)
         },
         error: (e) => {
           this.errorLogin = e.error.message
           console.log(e.error.message)
         }
       })
-
   }
 }

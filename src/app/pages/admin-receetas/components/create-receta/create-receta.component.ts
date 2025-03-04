@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalService } from '../../../../services/global.service';
 import { RecetasService } from '../../../../services/recetas.service';
-import { Recetas } from '../../../../models/recetas';
+import { recetaResponse, Recetas  } from '../../../../models/recetas';
 
 @Component({
   selector: 'app-create-receta',
@@ -32,7 +32,7 @@ constructor(private global:GlobalService, private recetas:RecetasService){}
       // console.log(newReceta);
       this.recetas.createReceta(newReceta)
         .subscribe({
-          next: ((res:Recetas) => {
+          next: ((res:recetaResponse) => {
             console.log(res);
             this.clearForm()
           }),

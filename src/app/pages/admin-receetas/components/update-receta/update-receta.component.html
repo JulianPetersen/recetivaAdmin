@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="content">
+    <app-menu-lateral [ngClass]=""></app-menu-lateral>
+    <div class="contenedor">
+        <div class="contentForm">
+            <div class="form" *ngIf="recetaObtained">
+                <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="recetaObtained.title" matInput placeholder="Titulo">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="this.ingredientesRecibed" matInput placeholder="Ingredientes">
+                </mat-form-field>
+                <input class="file" type="file" name="" id="" (change)="uploadFile($event)">
+                <div>
+                    <quill-editor [(ngModel)]="recetaObtained.instrucciones"></quill-editor>
+                </div>
+                <button mat-flat-button (click)="updateReceta()">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>

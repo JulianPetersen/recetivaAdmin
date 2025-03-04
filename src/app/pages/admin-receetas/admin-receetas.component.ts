@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import { RecetasService } from '../../services/recetas.service';
-import { Recetas } from '../../models/recetas';
 
 @Component({
   selector: 'app-admin-receetas',

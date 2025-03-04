@@ -6,3 +6,13 @@ export interface Recetas {
     instrucciones:string
     
 }
+
+
+export interface recetaResponse {
+    _id?:string,
+    title:string,
+    arrayIngredientes:string[],
+    img?:string,
+    instrucciones:string
+    
+}

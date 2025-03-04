@@ -9,4 +9,13 @@ import { MenuService } from '../../services/menu.service';
 export class MenuLateralComponent {
 
   constructor(public menuService:MenuService){}
+
+  isadmin:string;
+
+  ngOnInit(){
+
+  }
+
+
+
 }

@@ -24,7 +24,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import { ReceraSelectedComponent } from './pages/recera-selected/recera-selected.component';
 import {MatChipsModule} from '@angular/material/chips';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { UpdateRecetaComponent } from './pages/admin-receetas/components/update-receta/update-receta.component';
+import { AdminUserComponent } from './pages/admin-user/admin-user.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import {MatChipsModule} from '@angular/material/chips';
     CreateRecetaComponent,
     ListRecetasComponent,
     ReceraSelectedComponent,
+    UpdateRecetaComponent,
+    AdminUserComponent,
     
   ],
   imports: [
@@ -53,7 +58,9 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDividerModule,
     MatCardModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [
     provideClientHydration(),

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecetasService } from '../../services/recetas.service';
-import { Recetas } from '../../models/recetas';
+import { recetaResponse, Recetas, } from '../../models/recetas';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -12,7 +12,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class ReceraSelectedComponent {
   
   recetaId:string | null = null
-  recetaSelected:Recetas;
+  recetaSelected:recetaResponse;
   recetaTexto:string = "asd";
   sanitisedHtml:any;
 
@@ -38,7 +38,7 @@ export class ReceraSelectedComponent {
   getRecetaSelected(){
     this.receta.getRecetasById(this.recetaId)
       .subscribe({
-        next: ((res:Recetas) => {
+        next: ((res:recetaResponse) => {
           this.recetaSelected = res;
           this.sanititizedHtml(res.instrucciones)
         }),

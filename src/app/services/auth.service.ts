@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   login(user:User){
-    return this.http.post(`${this.global.URL}/auth/signin`, user)
+    return this.http.post(`${this.global.URL}/auth/signinweb`, user)
   }
 
 
@@ -27,5 +27,14 @@ export class AuthService {
   logOut(){
     localStorage.removeItem('token');
     this.router.navigate(['/login'])
+  }
+
+  getUserRoles(): string[] {
+    return JSON.parse(localStorage.getItem('roles') || '[]');
+  }
+
+  isAdminOrModerator(): boolean {
+    const roles = this.getUserRoles();
+    return roles.includes('admin') || roles.includes('moderator');
   }
 }
