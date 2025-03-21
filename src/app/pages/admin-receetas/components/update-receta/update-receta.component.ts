@@ -34,7 +34,6 @@ export class UpdateRecetaComponent {
   obtainRecetaId(){
     this.params.queryParams.subscribe(params => {
       this.recetaId = params['recetaId'];  // Obtienes el valor de recetaId
-      console.log('la receta es',this.recetaId)
     });
   }
 
@@ -46,7 +45,6 @@ export class UpdateRecetaComponent {
         next: ((res:recetaResponse) => {
           this.recetaObtained = res;
           this.ingredientesRecibed = res.arrayIngredientes.join(',')
-          console.log('Ingredientes recibed',this.ingredientesRecibed)
         })
       })
   }
@@ -63,9 +61,15 @@ export class UpdateRecetaComponent {
     
   }
 
-
+//TODO revisar que cuando envio update con image, no se actualizan los ingredientes.
   updateReceta(){
+    console.log(this.ingredientesRecibed)
     if(this.validateData()){
+
+      let ingredientesString = this.ingredientesRecibed
+            .split(',') // Separa por comas
+            .map(ing => ing.trim()) // Elimina espacios extra
+            .join(','); // Vuelve a unir sin espacios innecesarios
 
       if(!this.fileSelected){
         let receta:Recetas = {
@@ -73,6 +77,7 @@ export class UpdateRecetaComponent {
           arrayIngredientes: this.ingredientesRecibed,
           instrucciones:this.recetaObtained.instrucciones,
          }
+         console.log(this.ingredientesRecibed)
          this.receta.updateReceta(this.recetaObtained._id,receta)
           .subscribe({
             next:((res:any) => {
@@ -85,7 +90,7 @@ export class UpdateRecetaComponent {
       }else{
         let receta:Recetas = {
           title:this.recetaObtained.title,
-          arrayIngredientes: this.ingredientesRecibed,
+          arrayIngredientes: ingredientesString,
           instrucciones:this.recetaObtained.instrucciones,
          }
          this.receta.updateReceta(this.recetaObtained._id,receta,this.fileSelected.fileRaw)
@@ -111,7 +116,7 @@ export class UpdateRecetaComponent {
       this.global.showAlert('Error','Debes ingresar al menos un ingrediente')
       return false
     }
-    if(this.recetaObtained.instrucciones == "" || this.recetaObtained.instrucciones){
+    if(this.recetaObtained.instrucciones == "" || this.recetaObtained.instrucciones == undefined){
       this.global.showAlert('Error','Debes especificar las instrucciones de tu receta.')
     }
     return true
