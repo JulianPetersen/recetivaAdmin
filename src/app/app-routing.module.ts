@@ -9,7 +9,8 @@ import path from 'path';
 import { ReceraSelectedComponent } from './pages/recera-selected/recera-selected.component';
 import { UpdateRecetaComponent } from './pages/admin-receetas/components/update-receta/update-receta.component';
 import { AdminUserComponent } from './pages/admin-user/admin-user.component';
-import { adminGuard } from './guards/isadmin.guard';
+import { adminGuard } from './guards/admin.guard';
+
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path: "recetaselected", component:ReceraSelectedComponent, canActivate:[authGuard]},
   {path: "updatereceta", component:UpdateRecetaComponent, canActivate:[authGuard]},
-  {path: "useradmin", component:AdminUserComponent,  canActivate: [adminGuard] }
+  {path: "useradmin", component:AdminUserComponent,canActivate: [adminGuard]}
 ];
 
 @NgModule({

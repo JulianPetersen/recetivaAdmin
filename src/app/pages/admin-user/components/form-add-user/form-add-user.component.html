@@ -1,0 +1,31 @@
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Agregar un nuevo usuario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      
+      <div class="form">
+        <mat-form-field>
+          <mat-label>Mail</mat-label>
+          <input [(ngModel)]="newUser.email" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Ingrese una contraseña</mat-label>
+          <input [(ngModel)]="newUser.password" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Selecciona un Rol</mat-label>
+          <mat-select (selectionChange)="roleSelected()" [(ngModel)]="selectedRole">
+            <mat-option value="admin">Administrador</mat-option>
+            <mat-option value="moderator">Moderador</mat-option>
+            <mat-option value="Usuario">Usuario</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button (click)=" createNewUser()" mat-flat-button>Agregar Usuario</button>
+        </mat-card-actions>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

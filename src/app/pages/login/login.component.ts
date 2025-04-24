@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,10 @@ import { User } from '../../models/user';
 })
 export class LoginComponent {
 
-  constructor(private auth:AuthService, private router:Router) { }
+  constructor(private auth:AuthService, private router:Router,public global:GlobalService) { }
 
   usuario:User = {
-    username:"",
+
     email:"",
     password:""
   };

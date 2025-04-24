@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalService } from '../../services/global.service';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
@@ -8,12 +9,13 @@ import { MenuService } from '../../services/menu.service';
 })
 export class MenuLateralComponent {
 
-  constructor(public menuService:MenuService){}
+  constructor(public menuService:MenuService, public global:GlobalService){}
 
-  isadmin:string;
+  isadmin:boolean;
 
   ngOnInit(){
-
+    this.isadmin = this.global.isUserAdmin();
+    console.log('el usuario es admin', this.isadmin)
   }
 
 

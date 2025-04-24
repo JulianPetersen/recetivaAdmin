@@ -1,0 +1,20 @@
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Listado de usuarios</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let user of listUSers" role="listitem">
+          <div class="list-item-content">
+            <p>{{user.user.email}}</p>
+            <div class="buttons">
+              <button mat-flat-button><mat-icon matListItemIcon>edit</mat-icon></button>
+              <button mat-flat-button (click)="desactivateUser(user._id)"><mat-icon matListItemIcon >cancel</mat-icon></button>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+
+    </mat-card-content>
+  </mat-card>

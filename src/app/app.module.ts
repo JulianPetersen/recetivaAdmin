@@ -28,6 +28,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { UpdateRecetaComponent } from './pages/admin-receetas/components/update-receta/update-receta.component';
 import { AdminUserComponent } from './pages/admin-user/admin-user.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { FormAddUserComponent } from './pages/admin-user/components/form-add-user/form-add-user.component';
+import { ListUsersComponent } from './pages/admin-user/components/list-users/list-users.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,8 @@ import { AdminUserComponent } from './pages/admin-user/admin-user.component';
     ReceraSelectedComponent,
     UpdateRecetaComponent,
     AdminUserComponent,
+    FormAddUserComponent,
+    ListUsersComponent,
     
   ],
   imports: [
@@ -60,7 +66,10 @@ import { AdminUserComponent } from './pages/admin-user/admin-user.component';
     MatIconModule,
     MatChipsModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatOptionModule
+    
   ],
   providers: [
     provideClientHydration(),

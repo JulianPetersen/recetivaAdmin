@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
@@ -11,8 +11,10 @@ export class AuthService {
 
   constructor(private http:HttpClient, private router:Router, private global:GlobalService) { }
 
-  register(user:User){
-    return this.http.post(`${this.global.URL}/auth/signup`, user)
+  register(user:User,platform:string){
+    let params = new HttpParams()
+    .set('platform', platform)
+    return this.http.post(`${this.global.URL}/auth/signup`, user,{ params })
   }
 
   login(user:User){
