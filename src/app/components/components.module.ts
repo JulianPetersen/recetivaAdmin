@@ -8,25 +8,35 @@ import { MatButtonModule } from '@angular/material/button';
 import { AlertComponent } from './ui/alert/alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './ui/delete-dialog/delete-dialog.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { LoadSpinnerComponent } from './ui/load-spinner/load-spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     MenuLateralComponent,
     AlertComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    ToolbarComponent,
+    LoadSpinnerComponent
   ],
   imports: [
     CommonModule,
     MatIconModule,
     AppRoutingModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   exports:[
     HeaderComponent,
     MenuLateralComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    ToolbarComponent,
+    LoadSpinnerComponent
   ]
 })
 export class ComponentsModule { }

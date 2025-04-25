@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalService } from './global.service';
 import { Observable } from 'rxjs';
@@ -29,11 +29,36 @@ export class InfoUsersService {
     return this.http.get<AdminUserResponse[]>(`${this.global.URL}/infousers/adminUsers`,{headers:headers})
   }
 
-  desactivateUser(id:string,body){
+  getUserByEmail(emailFragment:string){
+    const token = this.getToken();  // Obtenemos el token de forma segura
+    let headers = new HttpHeaders({
+      'x-access-token': token || ''  // Si el token no existe, mandamos un string vacío
+    })
+    const params = new HttpParams().set('email', emailFragment);
+    return this.http.get<AdminUserResponse[]>(`${this.global.URL}/infousers/adminUsers/searchByEmail`,{headers:headers,params:params})
+  }
+
+  updateUser(id:string,body){
     const token = this.getToken();  // Obtenemos el token de forma segura
     let headers = new HttpHeaders({
       'x-access-token': token || ''  // Si el token no existe, mandamos un string vacío
     })
     return this.http.put(`${this.global.URL}/infousers/adminUsers/${id}`,body,{headers:headers})
+  }
+
+  getInfoUserAdminById(id:string){
+    const token = this.getToken();  // Obtenemos el token de forma segura
+    let headers = new HttpHeaders({
+      'x-access-token': token || ''  // Si el token no existe, mandamos un string vacío
+    })
+    return this.http.get<AdminUserResponse>(`${this.global.URL}/infousers/adminUsers/${id}`,{headers:headers})
+  }
+
+  getInfoUserByUserId(id:string){
+    const token = this.getToken();  // Obtenemos el token de forma segura
+    let headers = new HttpHeaders({
+      'x-access-token': token || ''  // Si el token no existe, mandamos un string vacío
+    })
+    return this.http.get<AdminUserResponse>(`${this.global.URL}/infousers/adminUsers/getByUserId/${id}`,{headers:headers})
   }
 }

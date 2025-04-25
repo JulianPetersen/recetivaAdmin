@@ -10,16 +10,18 @@ import { RecetasService } from '../../services/recetas.service';
 export class AdminReceetasComponent {
 
   
-  fileSelected:any
+ 
+  loadingChildren = true;
+  childrenLoadedCount = 0;
+  totalChildren = 1; // Porque tenés 3 componentes hijos
 
-  recetaTitle:string;
-  recetaIngredientes:string;
-  recetaInstrucciones:string;
 
-  constructor(){}
 
-  ngOnInit(){
-
+  onChildLoaded() {
+    this.childrenLoadedCount++;
+    if (this.childrenLoadedCount === this.totalChildren) {
+      this.loadingChildren = false;
+    }
   }
 
 

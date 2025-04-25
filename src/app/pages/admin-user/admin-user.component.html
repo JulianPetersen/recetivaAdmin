@@ -1,8 +1,13 @@
+
 <app-header></app-header>
+<app-toolbar></app-toolbar>
 <div class="content" >
-    <app-menu-lateral [ngClass]=""></app-menu-lateral>
-    <div class="contenedor">
-      <app-form-add-user></app-form-add-user>
-      <app-list-users></app-list-users>
+  <ng-container *ngIf="loadingChildren">
+    <app-load-spinner></app-load-spinner>
+  </ng-container>
+  <app-menu-lateral [ngClass]=""></app-menu-lateral>
+  <div class="contenedor">
+      <app-form-add-user ></app-form-add-user>
+      <app-list-users (loaded)="onChildLoaded()"></app-list-users>
     </div>
 </div>

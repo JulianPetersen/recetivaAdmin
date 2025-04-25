@@ -32,6 +32,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { FormAddUserComponent } from './pages/admin-user/components/form-add-user/form-add-user.component';
 import { ListUsersComponent } from './pages/admin-user/components/list-users/list-users.component';
+import { EditInfoUserComponent } from './pages/admin-user/components/edit-info-user/edit-info-user.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { ListUsersComponent } from './pages/admin-user/components/list-users/lis
     AdminUserComponent,
     FormAddUserComponent,
     ListUsersComponent,
+    EditInfoUserComponent,
     
   ],
   imports: [
@@ -68,7 +72,9 @@ import { ListUsersComponent } from './pages/admin-user/components/list-users/lis
     MatPaginatorModule,
     MatTableModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatMenuModule,
+    MatProgressSpinnerModule
     
   ],
   providers: [

@@ -33,7 +33,11 @@ export class RecetasService {
 
 
   getAllRecetas(page: number, limit: number): Observable<any> {
-    return this.http.get<recetaResponse[]>(`${this.global.URL}/recetas?page=${page}&limit=${limit}`);
+    const token = this.getToken();  // Obtenemos el token de forma segura
+    let headers = new HttpHeaders({
+      'x-access-token': token || ''  // Si el token no existe, mandamos un string vacío
+    })
+    return this.http.get<recetaResponse[]>(`${this.global.URL}/recetas?page=${page}&limit=${limit}`,{headers:headers});
   }
 
   getRecetasById(id:string){

@@ -1,20 +1,43 @@
 <mat-card class="example-card" appearance="outlined">
-    <mat-card-header>
-      <mat-card-title>Listado de usuarios</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-list role="list">
-        <mat-list-item *ngFor="let user of listUSers" role="listitem">
+  <mat-card-header>
+    <mat-card-title>Listado de usuarios</mat-card-title>
+  </mat-card-header>
+
+  <div class="search-container">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Buscar</mat-label>
+      <input matInput [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Escribí algo...">
+      <button mat-icon-button matSuffix (click)="onSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <mat-card-content>
+    <mat-list role="list" *ngIf="listUSers.length > 0">
+      <ng-container *ngFor="let user of listUSers">
+        <mat-list-item role="listitem">
           <div class="list-item-content">
             <p>{{user.user.email}}</p>
             <div class="buttons">
-              <button mat-flat-button><mat-icon matListItemIcon>edit</mat-icon></button>
-              <button mat-flat-button (click)="desactivateUser(user._id)"><mat-icon matListItemIcon >cancel</mat-icon></button>
+              <button mat-flat-button (click)="editInfoUser(user._id)">
+                <mat-icon matListItemIcon >edit</mat-icon>
+              </button>
+              <button *ngIf="user.isActive" mat-flat-button (click)="desactivateUser(user._id)">
+                <mat-icon matListItemIcon>cancel</mat-icon>
+              </button>
+              <button *ngIf="!user.isActive" mat-flat-button (click)="activeUser(user._id)">
+                <mat-icon matListItemIcon>check</mat-icon>
+              </button>
             </div>
           </div>
         </mat-list-item>
         <mat-divider></mat-divider>
-      </mat-list>
+      </ng-container>
+    </mat-list>
 
-    </mat-card-content>
-  </mat-card>
+    <mat-list class="notUsers" role="list" *ngIf="listUSers.length <= 0">
+      <p>no hay usuarios con ese mail</p>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

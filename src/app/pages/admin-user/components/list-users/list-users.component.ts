@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DeleteDialogComponent } from '../../../../components/ui/delete-dialog/delete-dialog.component';
 import { AdminUserResponse } from '../../../../models/user';
 import { GlobalService } from '../../../../services/global.service';
 import { InfoUsersService } from '../../../../services/info-users.service';
+import { EditInfoUserComponent } from '../edit-info-user/edit-info-user.component';
 
 @Component({
   selector: 'app-list-users',
@@ -14,6 +15,8 @@ import { InfoUsersService } from '../../../../services/info-users.service';
 export class ListUsersComponent {
 
   listUSers:AdminUserResponse[]=[];
+  searchText: string = '';
+  @Output() loaded = new EventEmitter<void>();
 
   constructor(private infoUsers:InfoUsersService,
               private dialog:MatDialog,
@@ -30,8 +33,10 @@ export class ListUsersComponent {
     this.infoUsers.getInfoUsers()
       .subscribe({
         next: ((res:AdminUserResponse[]) => {
+          this.loaded.emit();
           this.listUSers = res;
           console.log(this.listUSers)
+
         }),
         error: ((err) => {
           console.log(err)
@@ -56,10 +61,11 @@ export class ListUsersComponent {
         let body = {
           isActive:false,
       }
-        this.infoUsers.desactivateUser(id,body)
+        this.infoUsers.updateUser(id,body)
         .subscribe({
           next:((res => {
             console.log(res)
+            this.getInfoUsers()
           })),
           error: ((err) => {
             console.log(err);
@@ -70,5 +76,53 @@ export class ListUsersComponent {
   }
 
 
+  activeUser(id:string){
+    let body = {
+      isActive:true,
+  }
+    this.global.showAlertWhitFunction('ATENCION', '¿Quiere volver a activar este usuario?',() => {
+      this.infoUsers.updateUser(id,body)
+        .subscribe({
+          next: ((res) => {
+            console.log(res);
+            this.getInfoUsers();
+          }),
+          error: ((err) => {
+            console.log(err);
+          })
+        })
+    })
+  }
+
+  
+onSearch() {
+  if(this.searchText == ''){
+    this.getInfoUsers();
+  }else{
+    console.log(this.searchText)
+    this.infoUsers.getUserByEmail(this.searchText)
+     .subscribe({
+       next: ((res:AdminUserResponse[]) => {
+         console.log(res);
+         this.listUSers = res
+       }),
+       error: ((err) => {
+         console.log(err)
+         this.listUSers = []
+       })
+     })
+  }
+
 }
+
+
+editInfoUser(id:string){
+  this.dialog.open(EditInfoUserComponent, {
+    data:id,
+
+  });
+}
+}
+
+
 

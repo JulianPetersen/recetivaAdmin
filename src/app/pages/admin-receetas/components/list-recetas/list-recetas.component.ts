@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { GlobalService } from '../../../../services/global.service';
 import { RecetasService } from '../../../../services/recetas.service';
 import { Recetas } from '../../../../models/recetas';
@@ -20,6 +20,8 @@ export class ListRecetasComponent {
   dataSource = new MatTableDataSource<any>([]);
   totalRecetas = 0; // Total de recetas en la BD
   pageSize = 10; // Cantidad de recetas por página
+  isLoading:boolean = true
+  @Output() loaded = new EventEmitter<void>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -46,6 +48,8 @@ export class ListRecetasComponent {
 
   loadRecetas(page: number, limit: number) {
     this.receta.getAllRecetas(page, limit).subscribe(response => {
+      this.loaded.emit();
+      this.isLoading = false
       this.dataSource.data = response.docs; // Recetas en la tabla
       this.totalRecetas = response.totalDocs; // Total de recetas en la BD
     });

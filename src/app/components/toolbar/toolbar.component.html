@@ -1,0 +1,20 @@
+<div class="content">
+    <div class="logo">
+        <!-- <img src="assets/shorti-logo.png" alt=""> -->
+        <h3>Recetiva</h3>
+    </div>
+    <div class="toolbar">
+        <div class="nombre" *ngIf="infoUserdata && infoUserdata.name">
+            <p>{{infoUserdata.name}}</p>
+        </div>
+        <div class="menu">
+            <mat-icon matListItemIcon [matMenuTriggerFor]="menu" >account_circle</mat-icon>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="editInfoUser(infoUserdata._id)">Modificar mis datos</button>
+                <button mat-menu-item>Mis estadisticas</button>
+                <button mat-menu-item (click)="logOut()">Cerrar sesion</button>
+            </mat-menu>
+        </div>
+
+    </div>
+</div>

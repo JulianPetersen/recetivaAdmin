@@ -1,5 +1,9 @@
 <app-header></app-header>
+<app-toolbar></app-toolbar>
 <div class="content">
+    <ng-container *ngIf="loadingChildren">
+        <app-load-spinner></app-load-spinner>
+      </ng-container>
     <app-menu-lateral [ngClass]=""></app-menu-lateral>
     <div class="contenedor">
         <mat-tab-group>
@@ -7,7 +11,7 @@
                 <app-create-receta></app-create-receta>
             </mat-tab>
             <mat-tab label="Recetas">
-                <app-list-recetas></app-list-recetas>    
+                <app-list-recetas (loaded)="onChildLoaded()"></app-list-recetas>    
             </mat-tab>
         </mat-tab-group>
     </div>

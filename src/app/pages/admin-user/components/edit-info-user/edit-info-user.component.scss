@@ -1,0 +1,26 @@
+mat-card{
+    width: 400px;
+    margin: 20px;
+    height: 400px;
+    mat-card-header{
+        background-color: #2E4A4D;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        mat-card-title{
+            padding: 5px;
+        }
+    }
+    .form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top:20px ;
+        mat-form-field{
+            width: 90%;
+        }
+    }
+}

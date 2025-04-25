@@ -7,9 +7,17 @@ export interface User {
 
 export interface AdminUserResponse {
     _id?:string
-    isActive:boolean,
-    lastName:string,
-    matricula:string,
-    name:string
-    user:User
+    isActive?:boolean,
+    lastName?:string,
+    matricula?:string,
+    name?:string
+    user?:User
+}
+
+
+export interface AdminUserRequest {
+    lastName?:string,
+    matricula?:string,
+    name?:string
+    user?:User
 }

@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AdminUserComponent {
 
+  loadingChildren = true;
+  childrenLoadedCount = 0;
+  totalChildren = 1; // Porque tenés 3 componentes hijos
+
+
+
+  onChildLoaded() {
+    this.childrenLoadedCount++;
+    if (this.childrenLoadedCount === this.totalChildren) {
+      this.loadingChildren = false;
+    }
+  }
 }

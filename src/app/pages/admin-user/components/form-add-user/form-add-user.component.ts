@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from '../../../../models/user';
 import { AuthService } from '../../../../services/auth.service';
 import { GlobalService } from '../../../../services/global.service';
@@ -18,6 +18,7 @@ export class FormAddUserComponent {
     roles:[]
   };
 
+
   constructor(private auth:AuthService, private global:GlobalService){
 
   }
@@ -31,7 +32,8 @@ export class FormAddUserComponent {
   }
 
   createNewUser(){
-    this.auth.register(this.newUser,this.platform)
+    if(this.verificateData()){
+      this.auth.register(this.newUser,this.platform)
       .subscribe({
         next:((res:any) => {
           console.log(res)
@@ -44,14 +46,33 @@ export class FormAddUserComponent {
           this.global.showAlert('Error',`Algo fallo al intentar agregar Usuario ${err.error.message}`)
         })
       })
+    }
+    
+  }
+
+  verificateData(){
+    if(this.newUser.email == "" || this.newUser.email == undefined){
+      this.global.showAlert('Error','Debes ingresar un email para Agregar el usuario')
+      return false
+    }
+    if(this.newUser.password == "" || this.newUser.password == undefined){
+      this.global.showAlert('Error','Debes ingresar una contraseña para Agregar el usuario')
+      return false
+    }
+    if(this.newUser.roles.length == 0 ){
+      this.global.showAlert('Error','Debes asignarle un rol al Usuario')
+      return false
+    }
+    return true
   }
 
 
-  clearForm(){
+  clearForm() {
     this.newUser = {
-      email:"",
-      password:"",
-    }
-    this.selectedRole=""
+      email: "",
+      password: "",
+      roles: []
+    };
+    this.selectedRole = "";
   }
 }

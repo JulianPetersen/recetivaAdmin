@@ -1,3 +1,7 @@
+<ng-container *ngIf="isLoading">
+  <app-load-spinner></app-load-spinner>
+</ng-container>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
      <!-- Columna Título -->

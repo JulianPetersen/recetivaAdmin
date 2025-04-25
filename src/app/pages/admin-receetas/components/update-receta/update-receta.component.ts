@@ -31,6 +31,7 @@ export class UpdateRecetaComponent {
     this.obtainesReceta()
   }
 
+  
   obtainRecetaId(){
     this.params.queryParams.subscribe(params => {
       this.recetaId = params['recetaId'];  // Obtienes el valor de recetaId

@@ -32,6 +32,7 @@ export class GlobalService {
     dialogRef.afterClosed().subscribe((res) => {
       if (res == true) {
         afterCloseCallback();
+        dialogRef.close()
       }
     });
   }
@@ -43,5 +44,10 @@ export class GlobalService {
       return true;
     }
     return false;
+  }
+
+  getUserIdByLocalStorage(){
+    const userId = localStorage.getItem('userId')
+    return userId
   }
 }
