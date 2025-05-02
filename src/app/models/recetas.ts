@@ -3,7 +3,8 @@ export interface Recetas {
     title:string,
     arrayIngredientes:string,
     img?:string,
-    instrucciones:string
+    instrucciones:string,
+    nutricionista?:string,
     
 }
 

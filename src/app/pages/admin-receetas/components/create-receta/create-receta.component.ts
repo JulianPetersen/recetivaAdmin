@@ -11,7 +11,7 @@ import { recetaResponse, Recetas  } from '../../../../models/recetas';
 export class CreateRecetaComponent {
   
   fileSelected:any
-
+  userId:string
   recetaTitle:string;
   recetaIngredientes:string;
   recetaInstrucciones:string;
@@ -19,6 +19,9 @@ export class CreateRecetaComponent {
 
 constructor(private global:GlobalService, private recetas:RecetasService){}
 
+ngOnInit(){
+  this.userId = this.global.getUserIdByLocalStorage()
+}
 
   createReceta(){
     if(this.validateData()){
@@ -27,6 +30,7 @@ constructor(private global:GlobalService, private recetas:RecetasService){}
         arrayIngredientes:this.recetaIngredientes,
         img:this.fileSelected.fileRaw,
         instrucciones:this.recetaInstrucciones,
+        nutricionista:this.userId
       }
     
       // console.log(newReceta);
@@ -34,10 +38,12 @@ constructor(private global:GlobalService, private recetas:RecetasService){}
         .subscribe({
           next: ((res:recetaResponse) => {
             console.log(res);
+            this.global.showAlert('ATENCION','Receta agregada correctamente')
             this.clearForm()
           }),
           error: (err => {
             console.log(err);
+            this.global.showAlert('Error', `Error al crear la receta ${err.error}`)
           })
         })
     }

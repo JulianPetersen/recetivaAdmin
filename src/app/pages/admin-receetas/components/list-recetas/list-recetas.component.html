@@ -13,7 +13,7 @@
     <!-- Columna Nutricionista -->
     <ng-container matColumnDef="nutricionista">
       <th mat-header-cell *matHeaderCellDef> Nutricionista </th>
-      <td mat-cell *matCellDef="let receta"> {{ receta.nutricionista }} </td>
+      <td mat-cell *matCellDef="let receta"> {{ receta.nutricionista?.email || 'Sin asignar' }} </td>
     </ng-container>
 
     <!-- Columna Imagen -->

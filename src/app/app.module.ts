@@ -35,6 +35,8 @@ import { ListUsersComponent } from './pages/admin-user/components/list-users/lis
 import { EditInfoUserComponent } from './pages/admin-user/components/edit-info-user/edit-info-user.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FormAddUserComponent,
     ListUsersComponent,
     EditInfoUserComponent,
+    AdminCategoriesComponent,
     
   ],
   imports: [
@@ -74,7 +77,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     MatOptionModule,
     MatMenuModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    RouterModule
     
   ],
   providers: [

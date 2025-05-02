@@ -28,6 +28,7 @@ export class RecetasService {
     fd.append('ingredientes', receta.arrayIngredientes)
     fd.append('img', receta.img)
     fd.append('instrucciones', receta.instrucciones);
+    fd.append('nutricionista', receta.nutricionista);
     return this.http.post<recetaResponse>(`${this.global.URL}/recetas`,fd,{headers:headers})
   }
 
