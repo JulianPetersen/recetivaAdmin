@@ -39,6 +39,7 @@ import { AdminCategoriesComponent } from './pages/admin-categories/admin-categor
 import { RouterModule } from '@angular/router';
 import { FormAddCategorieComponent } from './pages/admin-categories/components/form-add-categorie/form-add-categorie.component';
 import { ListCategorieComponent } from './pages/admin-categories/components/list-categorie/list-categorie.component';
+import { AddIngredientComponent } from './pages/admin-receetas/components/add-ingredient/add-ingredient.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ListCategorieComponent } from './pages/admin-categories/components/list
     AdminCategoriesComponent,
     FormAddCategorieComponent,
     ListCategorieComponent,
+    AddIngredientComponent,
     
   ],
   imports: [
