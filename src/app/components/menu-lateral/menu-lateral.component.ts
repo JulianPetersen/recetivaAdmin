@@ -12,6 +12,7 @@ export class MenuLateralComponent {
   constructor(public menuService:MenuService, public global:GlobalService){}
 
   isadmin:boolean;
+  showRecetasSubmenu = false;
 
   ngOnInit(){
     this.isadmin = this.global.isUserAdmin();
@@ -19,5 +20,7 @@ export class MenuLateralComponent {
   }
 
 
-
+  toggleRecetasSubmenu() {
+    this.showRecetasSubmenu = !this.showRecetasSubmenu;
+  }
 }

@@ -37,6 +37,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
 import { RouterModule } from '@angular/router';
+import { FormAddCategorieComponent } from './pages/admin-categories/components/form-add-categorie/form-add-categorie.component';
+import { ListCategorieComponent } from './pages/admin-categories/components/list-categorie/list-categorie.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { RouterModule } from '@angular/router';
     ListUsersComponent,
     EditInfoUserComponent,
     AdminCategoriesComponent,
+    FormAddCategorieComponent,
+    ListCategorieComponent,
     
   ],
   imports: [

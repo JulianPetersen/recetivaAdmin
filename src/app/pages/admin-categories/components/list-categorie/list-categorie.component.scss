@@ -1,0 +1,41 @@
+mat-card{
+    width: 600px;
+    margin: 20px;
+    height: 400px;
+    overflow-y:auto ;
+    mat-card-header{
+        background-color: #2E4A4D;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        mat-card-title{
+            padding: 5px;
+        }
+    }
+    .notUsers{
+        display: flex;
+        justify-content: center;
+        color:gray
+    }
+    .list-item-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .buttons{
+            width: 100%;
+            display: flex;
+            justify-content: end;
+        }
+    }
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+      }
+      
+      .search-field {
+        width: 100%;
+        max-width: 400px;
+      }
+}

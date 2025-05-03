@@ -17,6 +17,7 @@ export class ListUsersComponent {
   listUSers:AdminUserResponse[]=[];
   searchText: string = '';
   @Output() loaded = new EventEmitter<void>();
+  
 
   constructor(private infoUsers:InfoUsersService,
               private dialog:MatDialog,

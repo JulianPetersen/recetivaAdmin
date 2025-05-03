@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InfoUsersService } from '../../services/info-users.service';
 
 @Component({
   selector: 'app-admin-user',
@@ -11,6 +12,7 @@ export class AdminUserComponent {
   childrenLoadedCount = 0;
   totalChildren = 1; // Porque tenés 3 componentes hijos
 
+  constructor(private infoUser:InfoUsersService){}
 
 
   onChildLoaded() {
@@ -19,4 +21,5 @@ export class AdminUserComponent {
       this.loadingChildren = false;
     }
   }
+
 }

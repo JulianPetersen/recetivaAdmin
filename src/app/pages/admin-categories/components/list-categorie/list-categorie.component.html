@@ -1,0 +1,27 @@
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Listado de categorias</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <mat-list role="list" *ngIf="allCategories.length > 0">
+        <ng-container *ngFor="let list of allCategories">
+          <mat-list-item role="listitem">
+            <div class="list-item-content">
+              <p>{{list.name}}</p>
+              <div class="buttons">
+                <button mat-flat-button (click)="deleteCategorie(list._id)">
+                  <mat-icon matListItemIcon >cancel</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-list>
+  
+      <mat-list class="notUsers" role="list" *ngIf="allCategories.length <= 0">
+        <p>no hay usuarios con ese mail</p>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>

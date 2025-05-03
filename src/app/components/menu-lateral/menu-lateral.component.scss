@@ -24,6 +24,17 @@
         display: block;
     }
     
+    .submenu {
+        margin-left: 16px;
+        display: flex;
+        flex-direction: column;
+        background-color: #497a80;
+      
+        button {
+          font-size: 0.9em;
+          padding-left: 24px;
+        }
+      }
 }
 
 
